@@ -1,0 +1,10 @@
+[book]
+authors = ["Hannes Mehnert"]
+language = "en"
+multilingual = false
+src = "src"
+title = "DNSvizor - recursive DNS resolver and DHCP server"
+
+[preprocessor.graphviz]
+command = "mdbook-graphviz"
+output-to-file = false
