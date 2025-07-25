@@ -4,7 +4,9 @@ configuration is close to dnsmasq.
 ## Installation
 
 You can download the unikernel binary from [our reproducible build infrastructure](https://builds.robur.coop/job/dnsvizor/build/latest). Download the `bin/dnsvizor.hvt` artifact.
-If you did that, skip to ["DNSvizor Configuration"](#dnsvizor-configuration).
+You need as well `solo5-hvt` which [our reproducible build infrastructure](https://builds.robur.coop/job/solo5) builds for select platforms.
+If we don't build for your platform you need to [build it yourself](#building-solo5-from-source-alternative).
+If you did all of that, skip to ["DNSvizor Configuration"](#dnsvizor-configuration).
 
 ## Building from source (alternative)
 
@@ -32,6 +34,10 @@ $ make
 ```
 
 The result is a binary, `dist/dnsvizor.hvt`, which we will use later.
+
+## Building solo5 from source (alternative)
+
+See the instructions in [doc/building.md](https://github.com/Solo5/solo5/blob/master/docs/building.md) in the Solo5 source tree.
 
 ## DNSvizor Configuration
 
@@ -79,7 +85,20 @@ To launch the unikernel, you need a solo5 tender (that the Building section
 already installed).
 
 ```sh
-$ solo5-hvt --net:service=tap0 -- \
+$ solo5-hvt --mem=96--net:service=tap0 --net-mac:service=00:80:41:ad:30:5e -- \
     dnsvizor.hvt --ipv4=10.0.0.2/24 --ipv4-gateway=10.0.0.1 --name=dnsvizor \
     --ca-seed=my-random-seed --password='my password'
 ```
+
+### Solo5-hvt options
+
+The solo5-hvt arguments follow the overall pattern `$ solo5-hvt <solo5-options> -- <kernel> <dnsvizor-arguments>`.
+The relevant solo5-options are:
+- `--mem 96` which allocates 96 MB of memory to dnsvizor. It can be omitted with a default allocation of 512 MB.
+- `--net:service=tap0` tells `solo5-hvt` to use the TAP interface `tap0` for the unikernel network `service`. This is required for DNSvizor as it expects exactly one network named `service`.
+- `--net-mac:service=00:80:41:ad:30:5e` tells `solo5-hvt` to assign the MAC address `00:80:41:ad:30:5e` to the unikernel network `service`. This is optional; if omitted a random MAC address is generated. Note that this may cause issues with ARP tables in the network.
+
+### DNSvizor options
+
+In the above example DNSvizor gets the arguments `--ipv4`, `--ipv4-gateway`, `--name`, `--ca-seed` and `--password`.
+For more information about DNSvizor arguments see [DNSvizor options](./dnsvizor_options.md).
