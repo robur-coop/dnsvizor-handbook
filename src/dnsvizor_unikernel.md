@@ -39,7 +39,7 @@ The configuration is passed via command-line arguments. If you're lacking
 configuration options here, please open an issue at the
 [dnsvizor](https://github.com/robur-coop/dnsvizor) repository.
 
-# Network configuration for the unikernel
+### Network configuration for the unikernel
 
 All you need is a tap interface to run the unikernel on. You also need your
 unikernel to be reachable from the outside (on the listening port), and be able
@@ -73,7 +73,7 @@ We're all set now: the unikernel is allowed to communicate to the outside,
 ports 80 and 443 are forwarded to the unikernel IP address, and a tap0 interface
 exists where the host system has the IP address 10.0.0.1 configured.
 
-# Launching DNSvizor
+## Launching DNSvizor
 
 To launch the unikernel, you need a solo5 tender (that the Building section
 already installed).
