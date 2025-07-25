@@ -4,7 +4,9 @@ configuration is close to dnsmasq.
 ## Installation
 
 You can download the unikernel binary from [our reproducible build infrastructure](https://builds.robur.coop/job/dnsvizor/build/latest). Download the `bin/dnsvizor.hvt` artifact.
-If you did that, skip to ["DNSvizor Configuration"](#dnsvizor-configuration).
+You need as well `solo5-hvt` which [our reproducible build infrastructure](https://builds.robur.coop/job/solo5) builds for select platforms.
+If we don't build for your platform you need to [build it yourself](#building-solo5-from-source-alternative).
+If you did all of that, skip to ["DNSvizor Configuration"](#dnsvizor-configuration).
 
 ## Building from source (alternative)
 
@@ -32,6 +34,10 @@ $ make
 ```
 
 The result is a binary, `dist/dnsvizor.hvt`, which we will use later.
+
+## Building solo5 from source (alternative)
+
+See the instructions in [doc/building.md](https://github.com/Solo5/solo5/blob/master/docs/building.md) in the Solo5 source tree.
 
 ## DNSvizor Configuration
 
