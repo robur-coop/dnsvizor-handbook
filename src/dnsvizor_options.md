@@ -43,3 +43,4 @@ If you use Dnsmasq and are missing any options in DNSvizor please [reach out to 
 - `--dhcp-range=<start>[,<end>|<mode>[,<netmask>[,<broadcast>]]][,<lease-time>]` enable the DHCP server.
 
 [mirage]: https://mirageos.org/
+[contact]: https://robur.coop/Contact

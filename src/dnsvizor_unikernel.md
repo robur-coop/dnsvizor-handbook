@@ -95,7 +95,7 @@ $ solo5-hvt --mem=96--net:service=tap0 --net-mac:service=00:80:41:ad:30:5e -- \
 The solo5-hvt arguments follow the overall pattern `$ solo5-hvt <solo5-options> -- <kernel> <dnsvizor-arguments>`.
 The relevant solo5-options are:
 - `--mem 96` which allocates 96 MB of memory to dnsvizor. It can be omitted with a default allocation of 512 MB.
-- `--net:service=tap0` tells `solo5-hvt` to use the [tap interface][tap-interface] `tap0` for the unikernel network `service`. This is required for DNSvizor as it expects exactly one network named `service`.
+- `--net:service=tap0` tells `solo5-hvt` to use the TAP interface `tap0` for the unikernel network `service`. This is required for DNSvizor as it expects exactly one network named `service`.
 - `--net-mac:service=00:80:41:ad:30:5e` tells `solo5-hvt` to assign the MAC address `00:80:41:ad:30:5e` to the unikernel network `service`. This is optional; if omitted a random MAC address is generated. Note that this may cause issues with ARP tables in the network.
 
 ### DNSvizor options
