@@ -4,7 +4,7 @@ configuration is close to dnsmasq.
 ## Installation
 
 You can download the unikernel binary from [our reproducible build infrastructure](https://builds.robur.coop/job/dnsvizor/build/latest). Download the `bin/dnsvizor.hvt` artifact.
-If you did that, skip to "DNSvizor Configuration".
+If you did that, skip to ["DNSvizor Configuration"](#dnsvizor-configuration).
 
 ## Building from source (alternative)
 
