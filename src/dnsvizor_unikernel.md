@@ -35,6 +35,13 @@ $ make
 
 The result is a binary, `dist/dnsvizor.hvt`, which we will use later.
 
+You can as well configure it with metrics which are reported to InfluxDB by using `mirage configure -t hvt --enable-monitoring`.
+If this is built, there are several command line options available:
+- `--net:management=tapX` and `--net-mac:management=MAC` the TAP device and mac address of the management interface
+- `--ipv4-management=192.168.0.42/24` the IPv4 address for the management interface
+- `--monitor=<IP>` the IP address of the InfluxDB server
+- `--syslog=<IP>` the IP address of the syslog server
+
 ## Building solo5 from source (alternative)
 
 See the instructions in [doc/building.md](https://github.com/Solo5/solo5/blob/master/docs/building.md) in the Solo5 source tree.
