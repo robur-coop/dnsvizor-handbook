@@ -24,7 +24,7 @@ See the `--help` output for more information.
 ## DNSvizor options
 DNSvizor strives for a degree of compatibility with Dnsmasq.
 Thus most options are Dnsmasq-compatible.
-See the [section further down](#dnsmasq-compatible-options) for information on those.
+See the [Dnsmasq Compatibility Guide](./dnsvizor_dnsmasq_compatibility.md) for information on those.
 The non-dnsmasq-compatible options are:
 
 - `--name=<name>` which would be equivalent of the hostname of a Dnsmasq setup - that is, the hostname you would find in /etc/hostname on a \*NIX system.
@@ -34,13 +34,3 @@ The non-dnsmasq-compatible options are:
 - `--dns-blocklist-url=<url>` adds `url` to the list of DNS block list sources to fetch.
 - `--dns-cache=<size>` the size of the DNS cache.
 <!-- TODO: --dns-upstream -->
-
-## Dnsmasq-comaptible options
-The following options are compatible with Dnsmasq.
-If you use Dnsmasq and are missing any options in DNSvizor please [reach out to us][contact].
-
-- `--dnssec` validate DNS replies and cache DNSSEC data.
-- `--dhcp-range=<start>[,<end>|<mode>[,<netmask>[,<broadcast>]]][,<lease-time>]` enable the DHCP server.
-
-[mirage]: https://mirageos.org/
-[contact]: https://robur.coop/Contact
