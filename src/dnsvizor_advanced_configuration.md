@@ -27,6 +27,14 @@ The `--ca-seed` argument determines the private key generation. It accepts a bas
 * **RSA (Default):** `rsa:4096:BASE64_SEED` or just `BASE64_SEED` (defaults to 4096 bits).
 * **Ed25519:** `ed25519:BASE64_SEED`.
 
+To generate a random base64-encoded 32-byte seed once and reuse it you can use `urandom`:
+
+    ```bash
+    # Generate a 32-byte seed encoded in base64
+
+    dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64
+    ```
+
 ## Dynamic Updates (RFC 2136)
 
 DNSvizor can update an external authoritative nameserver when a local DHCP client acquires a lease.

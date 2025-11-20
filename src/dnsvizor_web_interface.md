@@ -39,6 +39,13 @@ The web server listens on the configured HTTPS port (default 443).
     - **method**: `POST` 
     - **description**: Allows uploading a new `dnsmasq` configuration file (multipart form data).
     - **authenticated**: true
+    - **Parameters:**
+    - `dnsmasq_config`: The file field containing the configuration text.
+
+    - Example with `curl`: 
+        ```bash
+        curl -u user:password -F "dnsmasq_config=@/path/to/your/dnsmasq.conf"  https://<unikernel-ip>/configuration/upload
+        ```
 
 - You can upload a Dnsmasq configuration file (txt file), and the contents of this file will be automatically loaded in the textarea where you can make modifications if necessary. When you are satisfied with the configuration, you can click on the "Save configuration" button to effect the changes.
 
@@ -77,3 +84,16 @@ The unikernel implements a compliant DNS-over-HTTPS resolver [RFC 8484](https://
 - **Supported Methods:**
     - `GET`: Expects a base64url-encoded DNS query in the `?dns=` query parameter.
     - `POST`: Expects the raw DNS query in the body with `content-type: application/dns-message`.
+
+
+        - GET example (Base64url encoded):
+            This method uses a base64url-encoded DNS query string.
+            ```bash
+            # Query for 'robur.coop' (A record) encoded in base64url
+            curl "https://<unikernel-ip>/dns-query?dns=cm9idXIuY29vcA"
+
+        - POST example assuming 'query.bin' contains a raw DNS query packet
+
+        ```bash
+        curl -X POST -H "Content-Type: application/dns-message" --data-binary @query.bin https://<unikernel-ip>/dns-query
+            ```
