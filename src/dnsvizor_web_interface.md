@@ -40,6 +40,8 @@ The web server listens on the configured HTTPS port (default 443).
     - **description**: Allows uploading a new `dnsmasq` configuration file (multipart form data).
     - **authenticated**: true
 
+- You can upload a Dnsmasq configuration file (txt file), and the contents of this file will be automatically loaded in the textarea where you can make modifications if necessary. When you are satisfied with the configuration, you can click on the "Save configuration" button to effect the changes.
+
 ![Dnsvizor configuration web interface](../images/config.png)
 
 ## Blocklist Management
