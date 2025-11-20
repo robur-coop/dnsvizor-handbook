@@ -25,7 +25,7 @@ The web server listens on the configured HTTPS port (default 443).
 
 - `/querylog` 
     - **method**: `GET`
-    - **description**: Displays a log of recent DNS queries processed by the resolver. 
+    - **description**: Displays a log of recent DNS queries processed by the resolver. This doesn't work at the moment. 
     - **authenticated**: false
 
 ![Dnsvizor qeury log web interface](../images/query_log.png)
