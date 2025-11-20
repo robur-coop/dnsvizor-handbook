@@ -3,7 +3,6 @@
 The options we pass to DNSvizor can be put into three overall categories:
 - [Mirage options](#mirage-options),
 - [DNSvizor options](#dnsvizor-options),
-- [Dnsmasq-compatible options](#dnsmasq-compatible-options).
 
 All options with a description can be listed by running DNSvizor with `--help` as argument.
 The options are then printed to stdout.
@@ -33,4 +32,3 @@ The non-dnsmasq-compatible options are:
 - `--dns-block=<hostname>` adds `hostname` to the DNS block list.
 - `--dns-blocklist-url=<url>` adds `url` to the list of DNS block list sources to fetch.
 - `--dns-cache=<size>` the size of the DNS cache.
-<!-- TODO: --dns-upstream -->
