@@ -1,6 +1,6 @@
 # Advanced Configuration
 
-Beyond the basic setup, DNSvizor supports advanced features for privacy, upstream integration, and security.
+Beyond the basic setup, DNSvizor supports advanced features for privacy, upstreaming dns queries, and security.
 
 ## DNS Resolution Modes
 
@@ -19,7 +19,7 @@ DNSvizor implements modern RFCs to enhance privacy and security:
 
 The unikernel generates its own CA and certificates for HTTPS and DoH.
 
-- `--no-tls`: **Critical**. Disables TLS entirely. This turns off the HTTPS management server, DNS-over-TLS, and DNS-over-HTTPS. Use this only if running behind a secure reverse proxy or in a trusted environment.
+- `--no-tls`: This disables web interface and dns-over-https.
 
 ### Customizing the CA Seed
 The `--ca-seed` argument determines the private key generation. It accepts a base64-encoded string, optionally prefixed to specify the key type:
@@ -35,7 +35,7 @@ To generate a random base64-encoded 32-byte seed once and reuse it you can use `
     dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64
     ```
 
-## Dynamic Updates (RFC 2136)
+## Dynamic Updates [RFC 2136](https://www.rfc-editor.org/rfc/rfc2136.html)
 
 DNSvizor can update an external authoritative nameserver when a local DHCP client acquires a lease.
 
@@ -43,4 +43,4 @@ DNSvizor can update an external authoritative nameserver when a local DHCP clien
 - `--dns-key=<HOST:HASH:DATA>`: The TSIG key required to authenticate the update.
     * **Format:** `name:hash_alg:base64_secret` (e.g., `mykey:sha256:SGVsbG8=`).
 
-When configured, if a DHCP client requests a hostname (via FQDN option), DNSvizor will send a signed update packet to the external server.
+When configured, if a DHCP client requests a hostname (via FQDN option), DNSvizor sends a TSIG-signed Dynamic DNS update packet (defined in [RFC 2136](https://datatracker.ietf.org/doc/html/rfc2136)) to the external server.
