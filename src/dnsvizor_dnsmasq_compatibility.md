@@ -12,7 +12,7 @@ These options are fully implemented and affect the unikernel's behavior:
 * `--no-hosts`: Prevents reading local hostnames (only uses the `--name` argument).
 * `--dnssec`: Enables DNSSEC validation.
 
-## Ignored Options (Safe)
+## Ignored Options
 The following options are parsed (so they won't break your existing config scripts) but are explicitly **ignored** by DNSvizor. They have no effect on the unikernel:
 
 * `--interface`
@@ -21,7 +21,7 @@ The following options are parsed (so they won't break your existing config scrip
 * `--bind-interfaces`
 * `--no-dhcp-interface`
 
-## Unsupported Options (Warning)
+## Unsupported Options
 The following options are recognized by the parser but are **not yet implemented**. Using these will currently result in an error or startup failure:
 
 * `--dhcp-host`: Using this will trigger an "Unhandled" error during configuration processing.
