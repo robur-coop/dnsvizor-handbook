@@ -3,7 +3,3 @@ authors = ["Hannes Mehnert"]
 language = "en"
 src = "src"
 title = "DNSvizor - recursive DNS resolver and DHCP server"
-
-[preprocessor.graphviz]
-command = "mdbook-graphviz"
-output-to-file = false
