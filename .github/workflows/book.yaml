@@ -1,72 +1,34 @@
 name: GitHub Pages
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
 
 permissions:
   contents: write  # To push a branch
   pages: write  # To push to a GitHub Pages site
   id-token: write # To update the deployment status
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: tlylt/install-graphviz@main
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
-      # Install Rust & its package manager Cargo
-      - name: Install cargo
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-      # Cache installation assets
-      - name: Cache cargo registry
-        uses: actions/cache@v4
-        with:
-          path: ~/.cargo/registry
-          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
-      - name: Cache cargo index
-        uses: actions/cache@v4
-        with:
-          path: ~/.cargo/git
-          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
-      - name: Cache cargo build
-        uses: actions/cache@v4
-        with:
-          path: target
-          key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install mdbook and graphviz plugin
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: mdbook mdbook-graphviz
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build Book
-        run: mdbook build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: 'book'
+jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    if: (github.event_name != 'push' || github.ref == 'refs/heads/main') && github.event_name != 'pull_request'
-    needs: build
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v3
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v2
+        with:
+          mdbook-version: 'latest'
+
+      - run: mdbook build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: (github.event_name != 'push' || github.ref == 'refs/heads/main') && github.event_name != 'pull_request'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
