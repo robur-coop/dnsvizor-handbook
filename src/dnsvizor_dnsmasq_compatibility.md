@@ -1,7 +1,6 @@
 # Dnsmasq Compatibility Guide
 
-DNSvizor tries to parse `dnsmasq` style configuration files and arguments. However, not all options are fully implemented. This section details which options are safe to use and which may cause the unikernel to exit.
-If you use Dnsmasq and are missing any options in DNSvizor please [reach out to us][contact].
+DNSvizor tries to parse `dnsmasq` style configuration files and arguments. However, not all options are fully implemented. This section details which options are safe to use. If you use Dnsmasq and are missing any options in DNSvizor please [reach out to us][contact].
 
 ## Supported Options
 These options are fully implemented and affect the unikernel's behavior:
@@ -20,11 +19,5 @@ The following options are parsed (so they won't break your existing config scrip
 * `--listen-address`
 * `--bind-interfaces`
 * `--no-dhcp-interface`
-
-## Unsupported Options
-The following options are recognized by the parser but are **not yet implemented**. Using these will currently result in an error or startup failure:
-
-* `--dhcp-host`: Using this will trigger an "Unhandled" error during configuration processing.
-* `--dhcp-option`: Most tags are currently unhandled. The parser specifically checks for `Log_servers`, but usage is experimental.
 
 [contact]: https://robur.coop/Contact
