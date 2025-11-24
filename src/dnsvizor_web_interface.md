@@ -5,7 +5,7 @@ DNSvizor exposes a web-based management interface and a DNS-over-HTTPS (DoH) res
 ## Authentication
 Access to sensitive endpoints (like the blocklist or configuration) requires authentication.
 
-- **Password Setup:** You must pass the `--password` argument at startup. If omitted, endpoints requiring authentication will not be accessible.
+- **Password Setup:** Sensitive dashboard pages (for example, configuration updates) are protected by a password. Start the unikernel with the `--password` argument to set the password required to access those endpoints See below which endpoints are password protected.
 - **Method:** The interface uses [HTTP Basic Auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication).
 
 ![Dnsvizor web authentication](../images/auth.png)
