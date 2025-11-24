@@ -1,6 +1,6 @@
 # DNSvizor options
 
-The options we pass to DNSvizor can be put into three overall categories:
+The options we pass to DNSvizor can be put into two overall categories:
 - [Mirage options](#mirage-options),
 - [DNSvizor options](#dnsvizor-options),
 
