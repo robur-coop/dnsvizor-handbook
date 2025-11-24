@@ -35,7 +35,7 @@ The non-dnsmasq-compatible options are:
 
 ## Advanced Configuration
 
-Beyond the basic setup, DNSvizor supports advanced features for privacy, upstreaming dns queries, and security.
+Beyond the basic setup, DNSvizor supports advanced features for privacy and security.
 
 ### DNS Resolution Modes
 
