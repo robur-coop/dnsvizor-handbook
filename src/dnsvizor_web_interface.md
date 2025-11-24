@@ -10,7 +10,7 @@ Access to sensitive endpoints (like the blocklist or configuration) requires aut
 
 ![Dnsvizor web authentication](../images/auth.png)
 
-Any username will work, but the password must the be same password you used to startup the unikernel.
+Any username will work, but the password must the be same password you provided as argument (`--password`) to the unikernel.
 
 ## Dashboard Endpoints
 
