@@ -1,5 +1,5 @@
 [book]
-authors = ["Hannes Mehnert"]
+authors = ["Hannes Mehnert"; "Pixie Dust"; "Reynir Björnsson"]
 language = "en"
 src = "src"
-title = "DNSvizor - recursive DNS resolver and DHCP server"
+title = "DNSvizor - DNS resolver and DHCP server"
