@@ -18,7 +18,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: tlylt/install-graphviz@main
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -45,11 +44,11 @@ jobs:
         with:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
-      - name: Install mdbook and graphviz plugin
+      - name: Install mdbook plugin
         uses: actions-rs/cargo@v1
         with:
           command: install
-          args: mdbook mdbook-graphviz
+          args: mdbook
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build Book
