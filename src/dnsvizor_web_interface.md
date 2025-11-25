@@ -16,33 +16,33 @@ Any username will work, but the password must the be same password you provided 
 
 The web server listens on the configured HTTPS port (default 443).
 
-- `/` or `/dashboard` 
-    - **method**: `GET` 
-    - **description**: Displays statistics such as query rates etc. 
+- `/` or `/dashboard`
+    - **method**: `GET`
+    - **description**: Displays statistics such as query rates etc.
     - **authenticated**: false
 
 ![Dnsvizor dashboard web interface](../images/dashboard.png)
 
-- `/querylog` 
+- `/querylog`
     - **method**: `GET`
-    - **description**: Displays a log of recent DNS queries processed by the resolver. This doesn't work at the moment. 
+    - **description**: Displays a log of recent DNS queries processed by the resolver. This doesn't work at the moment.
     - **authenticated**: false
 
 ![Dnsvizor qeury log web interface](../images/query_log.png)
 
-- `/configuration` 
+- `/configuration`
     - **method**: `GET`
-    - **description**: Displays the current configuration state. 
+    - **description**: Displays the current configuration state.
     - **authenticated**: true
 
 - `/configuration/upload`
-    - **method**: `POST` 
+    - **method**: `POST`
     - **description**: Allows uploading a new `dnsmasq` configuration file (multipart form data).
     - **authenticated**: true
     - **Parameters:**
     - `dnsmasq_config`: The file field containing the configuration text.
 
-    - Example with `curl`: 
+    - Example with `curl`:
         ```bash
         curl -u user:password -F "dnsmasq_config=@/path/to/your/dnsmasq.conf"  https://<unikernel-ip>/configuration/upload
         ```
