@@ -8,7 +8,7 @@ Access to sensitive endpoints (like the blocklist or configuration) requires aut
 - **Password Setup:** Sensitive dashboard pages (for example, configuration updates) are protected by a password. Start the unikernel with the `--password` argument to set the password required to access those endpoints See below which endpoints are password protected.
 - **Method:** The interface uses [HTTP Basic Auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication).
 
-![Dnsvizor web authentication](../images/auth.png)
+![Dnsvizor web authentication](images/auth.png)
 
 Any username will work, but the password must the be same password you provided as argument (`--password`) to the unikernel.
 
@@ -21,14 +21,14 @@ The web server listens on the configured HTTPS port (default 443).
     - **description**: Displays statistics such as query rates etc.
     - **authenticated**: false
 
-![Dnsvizor dashboard web interface](../images/dashboard.png)
+![Dnsvizor dashboard web interface](images/dashboard.png)
 
 - `/querylog`
     - **method**: `GET`
     - **description**: Displays a log of recent DNS queries processed by the resolver.
     - **authenticated**: false
 
-![Dnsvizor query log web interface](../images/query_log.png)
+![Dnsvizor query log web interface](images/query_log.png)
 
 - `/configuration`
     - **method**: `GET`
@@ -49,13 +49,13 @@ The web server listens on the configured HTTPS port (default 443).
 
 - You can upload a Dnsmasq configuration file (txt file), and the contents of this file will be automatically loaded in the textarea where you can make modifications if necessary. When you are satisfied with the configuration, you can click on the "Save configuration" button to effect the changes.
 
-![Dnsvizor configuration web interface](../images/config.png)
+![Dnsvizor configuration web interface](images/config.png)
 
 ## Blocklist Management
 
 DNSvizor allows managing blocked domains via the web interface. All endpoints related to the blocklist require [authentication](#authentication)
 
-![Dnsvizor blocklist web interface](../images/blocklist.png)
+![Dnsvizor blocklist web interface](images/blocklist.png)
 
 The block list page displays information about blocked domains.
 
