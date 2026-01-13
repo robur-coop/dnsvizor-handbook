@@ -90,10 +90,14 @@ The unikernel implements a compliant DNS-over-HTTPS resolver [RFC 8484](https://
             This method uses a base64url-encoded DNS query string.
             ```bash
             # Query for 'robur.coop' (A record) encoded in base64url
-            curl "https://<unikernel-ip>/dns-query?dns=cm9idXIuY29vcA"
+            curl "https://<unikernel-ip>/dns-query?dns=XYIBIAABAAAAAAABBXJvYnVyBGNvb3AAAAEAAQAAKQTQAAAAAAAMAAoACLyE16zqPB6E"
+            # Use dig (from bind-utils)
+            dig @<unikernel-ip> +https-get a robur.coop
+            ```
 
         - POST example assuming 'query.bin' contains a raw DNS query packet
 
         ```bash
         curl -X POST -H "Content-Type: application/dns-message" --data-binary @query.bin https://<unikernel-ip>/dns-query
-            ```
+        dig @<unikernel-ip> +https a robur.coop
+        ```
